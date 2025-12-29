@@ -2,8 +2,12 @@ services:
   - type: web
     name: gold-trading-ai
     env: python
-    buildCommand: pip install -r requirements.txt
+    region: frankfurt  # یا singapore
+    buildCommand: |
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
     envVars:
       - key: PYTHON_VERSION
-        value: 3.9.0
+        value: 3.9.16
+    plan: free
